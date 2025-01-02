@@ -96,7 +96,11 @@ func ExecuteKey(k input.Key) CommandFunc {
 			if err != nil {
 				return fmt.Errorf("failed to type key %c: %w", k, err)
 			}
-			time.Sleep(typingSpeed)
+			if k == input.Backspace {
+				time.Sleep(typingSpeed / 5)
+			} else {
+				time.Sleep(typingSpeed)
+			}
 		}
 
 		return nil
@@ -349,7 +353,11 @@ func ExecuteType(c parser.Command, v *VHS) error {
 
 			v.Page.MustWaitIdle()
 		}
-		time.Sleep(typingSpeed)
+		if k == input.Backspace {
+			time.Sleep(typingSpeed / 5)
+		} else {
+			time.Sleep(typingSpeed)
+		}
 	}
 
 	return nil
