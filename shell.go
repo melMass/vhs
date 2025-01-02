@@ -64,7 +64,7 @@ var Shells = map[string]Shell{
 		Command: []string{"cmd.exe", "/k", "prompt=^> "},
 	},
 	nushell: {
-		Command: []string{"nu", "--execute", "$env.PROMPT_COMMAND = {'\033[;38;2;91;86;224m>\033[m '}; $env.PROMPT_COMMAND_RIGHT = {''}"},
+		Command: []string{"nu", "-l", "--no-history", "--execute", "$env.PROMPT_COMMAND = {''}"},
 	},
 	osh: {
 		Env:     []string{"PS1=\\[\\e[38;2;90;86;224m\\]> \\[\\e[0m\\]"},
